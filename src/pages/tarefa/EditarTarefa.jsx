@@ -8,6 +8,9 @@ import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
+import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty'; // Ícone para "Aguardando"
+import PlayArrowIcon from '@mui/icons-material/PlayArrow'; // Ícone para "Em Andamento"
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'; // Ícone para "Concluída"
 
 //Declaração do componente EditarTarefa, recebendo como props, do Componente ListarTarefa, os states handCloseEditar,
 // idTarefaSelecionada, tarefas, tarefa e setTarefas
@@ -137,7 +140,7 @@ const EditarTarefa = ({handleCloseEditar, idTarefaSelecionada, tarefas, tarefa, 
             </Grid>
             <Grid item xs={3}>  
               <FormControl fullWidth>
-                <InputLabel htmlFor="tarefa_recurso">Status</InputLabel>
+                <InputLabel htmlFor="tarefa_status">Status</InputLabel>
                 <Select
                   id="tarefa_status"
                   value={statusTarefa}
@@ -145,13 +148,19 @@ const EditarTarefa = ({handleCloseEditar, idTarefaSelecionada, tarefas, tarefa, 
                   onChange={handleStatus}
                   size="small"
                   sx={{
-                    color:'rgba(0, 0, 0, 0.6)',
+                    color: 'rgba(0, 0, 0, 0.6)',
                     fontWeight: 400,
-                  }} 
+                  }}
                 >
-                  <MenuItem value={'Aguardando'}>Aguardando</MenuItem>
-                  <MenuItem value={'Em Andamento'}>Em Andamento</MenuItem>
-                  <MenuItem value={'Concluída'}>Concluída</MenuItem>
+                  <MenuItem value={'Aguardando'}>
+                    <HourglassEmptyIcon sx={{ marginRight: 1}} /> Aguardando
+                  </MenuItem>
+                  <MenuItem value={'Em Andamento'}>
+                    <PlayArrowIcon sx={{ marginRight: 1 }} /> Em Andamento
+                  </MenuItem>
+                  <MenuItem value={'Concluída'}>
+                    <CheckCircleIcon sx={{ marginRight: 1 }} /> Concluída
+                  </MenuItem>
                 </Select>
               </FormControl>
             </Grid>
